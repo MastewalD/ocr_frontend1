@@ -126,6 +126,7 @@ export function ReceiptScanner() {
         </p>
       </div>
 
+
       <Card className="w-full p-4 sm:p-6 bg-white/80 border-zinc-200/80 shadow-none">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="flex flex-col h-full">
@@ -193,6 +194,7 @@ export function ReceiptScanner() {
             </div>
           </div>
 
+
           <div className="flex flex-col h-full">
             <CardHeader className="p-2">
               <CardTitle className="text-sm font-semibold text-zinc-700 flex items-center">
@@ -201,7 +203,7 @@ export function ReceiptScanner() {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-2 flex-grow">
-              <div className="w-full h-80 border border-zinc-200 rounded-xl bg-zinc-50/50 flex flex-col">
+              <div className="w-full min-h-80 border border-zinc-200 rounded-xl bg-zinc-50/50 flex flex-col">
                 {isProcessing ? (
                   <div className="flex-grow flex flex-col items-center justify-center text-zinc-500">
                     <Loader2 className="w-8 h-8 animate-spin text-[#87A8DD]" />

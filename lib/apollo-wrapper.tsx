@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { from } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context"; 
 import { createUploadLink } from "apollo-upload-client";
 import Cookies from "js-cookie";
 
@@ -11,18 +13,26 @@ import {
 } from "@apollo/client-integration-nextjs";
 
 function makeClient() {
-  const token = Cookies.get("auth_token");
-
-  const uploadLink = createUploadLink({
+  const httpLink = createUploadLink({
     uri: "https://ocr-2-zzlk.onrender.com/graphql",
-    headers: {
-      ...(token && { Authorization: `Bearer ${token}` }),
-    },
   });
+
+  const authLink = setContext((_, { headers }) => {
+    const token = Cookies.get("auth_token");
+    
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    };
+  });
+
+  const link = from([authLink, httpLink]);
 
   return new ApolloClient({
     cache: new InMemoryCache(),
-    link: uploadLink,
+    link: link,
   });
 }
 
