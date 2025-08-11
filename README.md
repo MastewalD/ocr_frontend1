@@ -37,7 +37,7 @@ Follow these instructions to get a local copy up and running for development and
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/receipt-scanner.git
+    git clone https://github.com/MastewalD/ocr_frontend1.git
     cd receipt-scanner
     ```
 
